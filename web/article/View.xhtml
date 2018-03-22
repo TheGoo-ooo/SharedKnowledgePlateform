@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewArticleTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewArticleLabel_articleId}"/>
+                    <h:outputText value="#{articleController.selected.articleId}" title="#{bundle.ViewArticleTitle_articleId}"/>
+                    <h:outputText value="#{bundle.ViewArticleLabel_subjectId}"/>
+                    <h:outputText value="#{articleController.selected.subjectId}" title="#{bundle.ViewArticleTitle_subjectId}"/>
+                    <h:outputText value="#{bundle.ViewArticleLabel_title}"/>
+                    <h:outputText value="#{articleController.selected.title}" title="#{bundle.ViewArticleTitle_title}"/>
+                    <h:outputText value="#{bundle.ViewArticleLabel_userId}"/>
+                    <h:outputText value="#{articleController.selected.userId}" title="#{bundle.ViewArticleTitle_userId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{articleController.destroyAndView}" value="#{bundle.ViewArticleDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewArticleEditLink}"/>
+                <br />
+                <h:commandLink action="#{articleController.prepareCreate}" value="#{bundle.ViewArticleCreateLink}" />
+                <br />
+                <h:commandLink action="#{articleController.prepareList}" value="#{bundle.ViewArticleShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewArticleIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

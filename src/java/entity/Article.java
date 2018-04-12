@@ -6,24 +6,18 @@
 package entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -35,6 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Article.findAll", query = "SELECT a FROM Article a")
     , @NamedQuery(name = "Article.findByArticleId", query = "SELECT a FROM Article a WHERE a.articleId = :articleId")
+    , @NamedQuery(name = "Article.findByUserId", query = "SELECT a FROM Article a WHERE a.userId = :userId")
     , @NamedQuery(name = "Article.findBySubjectId", query = "SELECT a FROM Article a WHERE a.subjectId = :subjectId")
     , @NamedQuery(name = "Article.findByTitle", query = "SELECT a FROM Article a WHERE a.title = :title")})
 public class Article implements Serializable {
@@ -47,6 +42,10 @@ public class Article implements Serializable {
     private Integer articleId;
     @Basic(optional = false)
     @NotNull
+    @Column(name = "user_id")
+    private int userId;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "subject_id")
     private int subjectId;
     @Basic(optional = false)
@@ -54,11 +53,6 @@ public class Article implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "title")
     private String title;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "articleId")
-    private Collection<Comment> commentCollection;
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-    @ManyToOne(optional = false)
-    private User userId;
 
     public Article() {
     }
@@ -67,8 +61,9 @@ public class Article implements Serializable {
         this.articleId = articleId;
     }
 
-    public Article(Integer articleId, int subjectId, String title) {
+    public Article(Integer articleId, int userId, int subjectId, String title) {
         this.articleId = articleId;
+        this.userId = userId;
         this.subjectId = subjectId;
         this.title = title;
     }
@@ -79,6 +74,14 @@ public class Article implements Serializable {
 
     public void setArticleId(Integer articleId) {
         this.articleId = articleId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public int getSubjectId() {
@@ -95,23 +98,6 @@ public class Article implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    @XmlTransient
-    public Collection<Comment> getCommentCollection() {
-        return commentCollection;
-    }
-
-    public void setCommentCollection(Collection<Comment> commentCollection) {
-        this.commentCollection = commentCollection;
-    }
-
-    public User getUserId() {
-        return userId;
-    }
-
-    public void setUserId(User userId) {
-        this.userId = userId;
     }
 
     @Override

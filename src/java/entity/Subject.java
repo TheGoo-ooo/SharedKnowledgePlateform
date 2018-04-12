@@ -30,8 +30,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Subject.findAll", query = "SELECT s FROM Subject s")
     , @NamedQuery(name = "Subject.findBySubjectId", query = "SELECT s FROM Subject s WHERE s.subjectId = :subjectId")
     , @NamedQuery(name = "Subject.findByName", query = "SELECT s FROM Subject s WHERE s.name = :name")
-    , @NamedQuery(name = "Subject.findByImg", query = "SELECT s FROM Subject s WHERE s.img = :img")
-    , @NamedQuery(name = "Subject.findByDescription", query = "SELECT s FROM Subject s WHERE s.description = :description")})
+    , @NamedQuery(name = "Subject.findByImage", query = "SELECT s FROM Subject s WHERE s.image = :image")
+    , @NamedQuery(name = "Subject.findByDescription", query = "SELECT s FROM Subject s WHERE s.description = :description")
+    , @NamedQuery(name = "Subject.findByColor", query = "SELECT s FROM Subject s WHERE s.color = :color")
+    , @NamedQuery(name = "Subject.findByParentId", query = "SELECT s FROM Subject s WHERE s.parentId = :parentId")})
 public class Subject implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,19 +44,28 @@ public class Subject implements Serializable {
     private Integer subjectId;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 100)
+    @Size(min = 1, max = 30)
     @Column(name = "name")
     private String name;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2000)
-    @Column(name = "img")
-    private String img;
+    @Column(name = "image")
+    private String image;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2000)
     @Column(name = "description")
     private String description;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 10)
+    @Column(name = "color")
+    private String color;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "parent_id")
+    private int parentId;
 
     public Subject() {
     }
@@ -63,11 +74,13 @@ public class Subject implements Serializable {
         this.subjectId = subjectId;
     }
 
-    public Subject(Integer subjectId, String name, String img, String description) {
+    public Subject(Integer subjectId, String name, String image, String description, String color, int parentId) {
         this.subjectId = subjectId;
         this.name = name;
-        this.img = img;
+        this.image = image;
         this.description = description;
+        this.color = color;
+        this.parentId = parentId;
     }
 
     public Integer getSubjectId() {
@@ -86,12 +99,12 @@ public class Subject implements Serializable {
         this.name = name;
     }
 
-    public String getImg() {
-        return img;
+    public String getImage() {
+        return image;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getDescription() {
@@ -100,6 +113,22 @@ public class Subject implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public int getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(int parentId) {
+        this.parentId = parentId;
     }
 
     @Override

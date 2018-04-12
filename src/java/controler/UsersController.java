@@ -1,9 +1,9 @@
 package controler;
 
-import entity.User;
+import entity.Users;
 import controler.util.JsfUtil;
 import controler.util.PaginationHelper;
-import bean.UserFacade;
+import bean.UsersFacade;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
@@ -18,29 +18,29 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
-@Named("userController")
+@Named("usersController")
 @SessionScoped
-public class UserController implements Serializable {
+public class UsersController implements Serializable {
 
-    private User current;
+    private Users current;
     private DataModel items = null;
     @EJB
-    private bean.UserFacade ejbFacade;
+    private bean.UsersFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
-    public UserController() {
+    public UsersController() {
     }
 
-    public User getSelected() {
+    public Users getSelected() {
         if (current == null) {
-            current = new User();
+            current = new Users();
             selectedItemIndex = -1;
         }
         return current;
     }
 
-    private UserFacade getFacade() {
+    private UsersFacade getFacade() {
         return ejbFacade;
     }
 
@@ -68,13 +68,13 @@ public class UserController implements Serializable {
     }
 
     public String prepareView() {
-        current = (User) getItems().getRowData();
+        current = (Users) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new User();
+        current = new Users();
         selectedItemIndex = -1;
         return "Create";
     }
@@ -82,7 +82,7 @@ public class UserController implements Serializable {
     public String create() {
         try {
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserCreated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UsersCreated"));
             return prepareCreate();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
@@ -91,7 +91,7 @@ public class UserController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (User) getItems().getRowData();
+        current = (Users) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -99,7 +99,7 @@ public class UserController implements Serializable {
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserUpdated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UsersUpdated"));
             return "View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
@@ -108,7 +108,7 @@ public class UserController implements Serializable {
     }
 
     public String destroy() {
-        current = (User) getItems().getRowData();
+        current = (Users) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -132,7 +132,7 @@ public class UserController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UsersDeleted"));
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
         }
@@ -188,21 +188,21 @@ public class UserController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    public User getUser(java.lang.Integer id) {
+    public Users getUsers(java.lang.Integer id) {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(forClass = User.class)
-    public static class UserControllerConverter implements Converter {
+    @FacesConverter(forClass = Users.class)
+    public static class UsersControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            UserController controller = (UserController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "userController");
-            return controller.getUser(getKey(value));
+            UsersController controller = (UsersController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "usersController");
+            return controller.getUsers(getKey(value));
         }
 
         java.lang.Integer getKey(String value) {
@@ -222,11 +222,11 @@ public class UserController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof User) {
-                User o = (User) object;
+            if (object instanceof Users) {
+                Users o = (Users) object;
                 return getStringKey(o.getUserId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + User.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Users.class.getName());
             }
         }
 

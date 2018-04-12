@@ -17,14 +17,12 @@
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateArticleLabel_articleId}" for="articleId" />
                     <h:inputText id="articleId" value="#{articleController.selected.articleId}" title="#{bundle.CreateArticleTitle_articleId}" required="true" requiredMessage="#{bundle.CreateArticleRequiredMessage_articleId}"/>
+                    <h:outputLabel value="#{bundle.CreateArticleLabel_userId}" for="userId" />
+                    <h:inputText id="userId" value="#{articleController.selected.userId}" title="#{bundle.CreateArticleTitle_userId}" required="true" requiredMessage="#{bundle.CreateArticleRequiredMessage_userId}"/>
                     <h:outputLabel value="#{bundle.CreateArticleLabel_subjectId}" for="subjectId" />
                     <h:inputText id="subjectId" value="#{articleController.selected.subjectId}" title="#{bundle.CreateArticleTitle_subjectId}" required="true" requiredMessage="#{bundle.CreateArticleRequiredMessage_subjectId}"/>
                     <h:outputLabel value="#{bundle.CreateArticleLabel_title}" for="title" />
                     <h:inputText id="title" value="#{articleController.selected.title}" title="#{bundle.CreateArticleTitle_title}" required="true" requiredMessage="#{bundle.CreateArticleRequiredMessage_title}"/>
-                    <h:outputLabel value="#{bundle.CreateArticleLabel_userId}" for="userId" />
-                    <h:selectOneMenu id="userId" value="#{articleController.selected.userId}" title="#{bundle.CreateArticleTitle_userId}" required="true" requiredMessage="#{bundle.CreateArticleRequiredMessage_userId}">
-                        <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{articleController.create}" value="#{bundle.CreateArticleSaveLink}" />

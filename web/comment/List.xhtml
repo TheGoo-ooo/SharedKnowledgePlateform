@@ -28,6 +28,18 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCommentTitle_userId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.userId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCommentTitle_articleId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.articleId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListCommentTitle_dateCreate}"/>
                             </f:facet>
                             <h:outputText value="#{item.dateCreate}">
@@ -44,15 +56,9 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCommentTitle_userId}"/>
+                                <h:outputText value="#{bundle.ListCommentTitle_content}"/>
                             </f:facet>
-                            <h:outputText value="#{item.userId}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCommentTitle_articleId}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.articleId}"/>
+                            <h:outputText value="#{item.content}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">

@@ -6,9 +6,7 @@
 package entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,29 +14,27 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author florian.fasmeyer
  */
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
-    , @NamedQuery(name = "User.findByUserId", query = "SELECT u FROM User u WHERE u.userId = :userId")
-    , @NamedQuery(name = "User.findByName", query = "SELECT u FROM User u WHERE u.name = :name")
-    , @NamedQuery(name = "User.findByAvatar", query = "SELECT u FROM User u WHERE u.avatar = :avatar")
-    , @NamedQuery(name = "User.findByDescription", query = "SELECT u FROM User u WHERE u.description = :description")
-    , @NamedQuery(name = "User.findByIsAdmin", query = "SELECT u FROM User u WHERE u.isAdmin = :isAdmin")
-    , @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")})
-public class User implements Serializable {
+    @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u")
+    , @NamedQuery(name = "Users.findByUserId", query = "SELECT u FROM Users u WHERE u.userId = :userId")
+    , @NamedQuery(name = "Users.findByName", query = "SELECT u FROM Users u WHERE u.name = :name")
+    , @NamedQuery(name = "Users.findByAvatar", query = "SELECT u FROM Users u WHERE u.avatar = :avatar")
+    , @NamedQuery(name = "Users.findByDescription", query = "SELECT u FROM Users u WHERE u.description = :description")
+    , @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password")
+    , @NamedQuery(name = "Users.findByUsergroupsId", query = "SELECT u FROM Users u WHERE u.usergroupsId = :usergroupsId")})
+public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -63,32 +59,28 @@ public class User implements Serializable {
     private String description;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "isAdmin")
-    private boolean isAdmin;
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 30)
     @Column(name = "password")
     private String password;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
-    private Collection<Comment> commentCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
-    private Collection<Article> articleCollection;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "usergroups_id")
+    private int usergroupsId;
 
-    public User() {
+    public Users() {
     }
 
-    public User(Integer userId) {
+    public Users(Integer userId) {
         this.userId = userId;
     }
 
-    public User(Integer userId, String name, String avatar, String description, boolean isAdmin, String password) {
+    public Users(Integer userId, String name, String avatar, String description, String password, int usergroupsId) {
         this.userId = userId;
         this.name = name;
         this.avatar = avatar;
         this.description = description;
-        this.isAdmin = isAdmin;
         this.password = password;
+        this.usergroupsId = usergroupsId;
     }
 
     public Integer getUserId() {
@@ -123,14 +115,6 @@ public class User implements Serializable {
         this.description = description;
     }
 
-    public boolean getIsAdmin() {
-        return isAdmin;
-    }
-
-    public void setIsAdmin(boolean isAdmin) {
-        this.isAdmin = isAdmin;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -139,22 +123,12 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    @XmlTransient
-    public Collection<Comment> getCommentCollection() {
-        return commentCollection;
+    public int getUsergroupsId() {
+        return usergroupsId;
     }
 
-    public void setCommentCollection(Collection<Comment> commentCollection) {
-        this.commentCollection = commentCollection;
-    }
-
-    @XmlTransient
-    public Collection<Article> getArticleCollection() {
-        return articleCollection;
-    }
-
-    public void setArticleCollection(Collection<Article> articleCollection) {
-        this.articleCollection = articleCollection;
+    public void setUsergroupsId(int usergroupsId) {
+        this.usergroupsId = usergroupsId;
     }
 
     @Override
@@ -167,10 +141,10 @@ public class User implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof User)) {
+        if (!(object instanceof Users)) {
             return false;
         }
-        User other = (User) object;
+        Users other = (Users) object;
         if ((this.userId == null && other.userId != null) || (this.userId != null && !this.userId.equals(other.userId))) {
             return false;
         }
@@ -179,7 +153,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.User[ userId=" + userId + " ]";
+        return "entity.Users[ userId=" + userId + " ]";
     }
     
 }

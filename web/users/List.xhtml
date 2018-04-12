@@ -7,72 +7,72 @@
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="#{bundle.ListUserTitle}"></h:outputText>
+            <h:outputText value="#{bundle.ListUsersTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
             <h:form styleClass="jsfcrud_list_form">
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
-                <h:outputText escape="false" value="#{bundle.ListUserEmpty}" rendered="#{userController.items.rowCount == 0}"/>
-                <h:panelGroup rendered="#{userController.items.rowCount > 0}">
-                    <h:outputText value="#{userController.pagination.pageFirstItem + 1}..#{userController.pagination.pageLastItem + 1}/#{userController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{userController.previous}" value="#{bundle.Previous} #{userController.pagination.pageSize}" rendered="#{userController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{userController.next}" value="#{bundle.Next} #{userController.pagination.pageSize}" rendered="#{userController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{userController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                <h:outputText escape="false" value="#{bundle.ListUsersEmpty}" rendered="#{usersController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{usersController.items.rowCount > 0}">
+                    <h:outputText value="#{usersController.pagination.pageFirstItem + 1}..#{usersController.pagination.pageLastItem + 1}/#{usersController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{usersController.previous}" value="#{bundle.Previous} #{usersController.pagination.pageSize}" rendered="#{usersController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{usersController.next}" value="#{bundle.Next} #{usersController.pagination.pageSize}" rendered="#{usersController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{usersController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListUserTitle_userId}"/>
+                                <h:outputText value="#{bundle.ListUsersTitle_userId}"/>
                             </f:facet>
                             <h:outputText value="#{item.userId}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListUserTitle_name}"/>
+                                <h:outputText value="#{bundle.ListUsersTitle_name}"/>
                             </f:facet>
                             <h:outputText value="#{item.name}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListUserTitle_avatar}"/>
+                                <h:outputText value="#{bundle.ListUsersTitle_avatar}"/>
                             </f:facet>
                             <h:outputText value="#{item.avatar}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListUserTitle_description}"/>
+                                <h:outputText value="#{bundle.ListUsersTitle_description}"/>
                             </f:facet>
                             <h:outputText value="#{item.description}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListUserTitle_isAdmin}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.isAdmin}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListUserTitle_password}"/>
+                                <h:outputText value="#{bundle.ListUsersTitle_password}"/>
                             </f:facet>
                             <h:outputText value="#{item.password}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUsersTitle_usergroupsId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usergroupsId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{userController.prepareView}" value="#{bundle.ListUserViewLink}"/>
+                            <h:commandLink action="#{usersController.prepareView}" value="#{bundle.ListUsersViewLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{userController.prepareEdit}" value="#{bundle.ListUserEditLink}"/>
+                            <h:commandLink action="#{usersController.prepareEdit}" value="#{bundle.ListUsersEditLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{userController.destroy}" value="#{bundle.ListUserDestroyLink}"/>
+                            <h:commandLink action="#{usersController.destroy}" value="#{bundle.ListUsersDestroyLink}"/>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{userController.prepareCreate}" value="#{bundle.ListUserCreateLink}"/>
+                <h:commandLink action="#{usersController.prepareCreate}" value="#{bundle.ListUsersCreateLink}"/>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{bundle.ListUserIndexLink}"/>
+                <h:link outcome="/index" value="#{bundle.ListUsersIndexLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>

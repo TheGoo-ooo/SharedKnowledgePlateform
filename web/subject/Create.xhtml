@@ -19,10 +19,14 @@
                     <h:inputText id="subjectId" value="#{subjectController.selected.subjectId}" title="#{bundle.CreateSubjectTitle_subjectId}" required="true" requiredMessage="#{bundle.CreateSubjectRequiredMessage_subjectId}"/>
                     <h:outputLabel value="#{bundle.CreateSubjectLabel_name}" for="name" />
                     <h:inputText id="name" value="#{subjectController.selected.name}" title="#{bundle.CreateSubjectTitle_name}" required="true" requiredMessage="#{bundle.CreateSubjectRequiredMessage_name}"/>
-                    <h:outputLabel value="#{bundle.CreateSubjectLabel_img}" for="img" />
-                    <h:inputText id="img" value="#{subjectController.selected.img}" title="#{bundle.CreateSubjectTitle_img}" required="true" requiredMessage="#{bundle.CreateSubjectRequiredMessage_img}"/>
+                    <h:outputLabel value="#{bundle.CreateSubjectLabel_image}" for="image" />
+                    <h:inputText id="image" value="#{subjectController.selected.image}" title="#{bundle.CreateSubjectTitle_image}" required="true" requiredMessage="#{bundle.CreateSubjectRequiredMessage_image}"/>
                     <h:outputLabel value="#{bundle.CreateSubjectLabel_description}" for="description" />
                     <h:inputText id="description" value="#{subjectController.selected.description}" title="#{bundle.CreateSubjectTitle_description}" required="true" requiredMessage="#{bundle.CreateSubjectRequiredMessage_description}"/>
+                    <h:outputLabel value="#{bundle.CreateSubjectLabel_color}" for="color" />
+                    <h:inputText id="color" value="#{subjectController.selected.color}" title="#{bundle.CreateSubjectTitle_color}" required="true" requiredMessage="#{bundle.CreateSubjectRequiredMessage_color}"/>
+                    <h:outputLabel value="#{bundle.CreateSubjectLabel_parentId}" for="parentId" />
+                    <h:inputText id="parentId" value="#{subjectController.selected.parentId}" title="#{bundle.CreateSubjectTitle_parentId}" required="true" requiredMessage="#{bundle.CreateSubjectRequiredMessage_parentId}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{subjectController.create}" value="#{bundle.CreateSubjectSaveLink}" />

@@ -19,10 +19,14 @@
                     <h:outputText value="#{subjectController.selected.subjectId}" title="#{bundle.ViewSubjectTitle_subjectId}"/>
                     <h:outputText value="#{bundle.ViewSubjectLabel_name}"/>
                     <h:outputText value="#{subjectController.selected.name}" title="#{bundle.ViewSubjectTitle_name}"/>
-                    <h:outputText value="#{bundle.ViewSubjectLabel_img}"/>
-                    <h:outputText value="#{subjectController.selected.img}" title="#{bundle.ViewSubjectTitle_img}"/>
+                    <h:outputText value="#{bundle.ViewSubjectLabel_image}"/>
+                    <h:outputText value="#{subjectController.selected.image}" title="#{bundle.ViewSubjectTitle_image}"/>
                     <h:outputText value="#{bundle.ViewSubjectLabel_description}"/>
                     <h:outputText value="#{subjectController.selected.description}" title="#{bundle.ViewSubjectTitle_description}"/>
+                    <h:outputText value="#{bundle.ViewSubjectLabel_color}"/>
+                    <h:outputText value="#{subjectController.selected.color}" title="#{bundle.ViewSubjectTitle_color}"/>
+                    <h:outputText value="#{bundle.ViewSubjectLabel_parentId}"/>
+                    <h:outputText value="#{subjectController.selected.parentId}" title="#{bundle.ViewSubjectTitle_parentId}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{subjectController.destroyAndView}" value="#{bundle.ViewSubjectDestroyLink}"/>

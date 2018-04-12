@@ -17,12 +17,12 @@
                 <h:panelGrid columns="2">
                     <h:outputText value="#{bundle.ViewArticleLabel_articleId}"/>
                     <h:outputText value="#{articleController.selected.articleId}" title="#{bundle.ViewArticleTitle_articleId}"/>
+                    <h:outputText value="#{bundle.ViewArticleLabel_userId}"/>
+                    <h:outputText value="#{articleController.selected.userId}" title="#{bundle.ViewArticleTitle_userId}"/>
                     <h:outputText value="#{bundle.ViewArticleLabel_subjectId}"/>
                     <h:outputText value="#{articleController.selected.subjectId}" title="#{bundle.ViewArticleTitle_subjectId}"/>
                     <h:outputText value="#{bundle.ViewArticleLabel_title}"/>
                     <h:outputText value="#{articleController.selected.title}" title="#{bundle.ViewArticleTitle_title}"/>
-                    <h:outputText value="#{bundle.ViewArticleLabel_userId}"/>
-                    <h:outputText value="#{articleController.selected.userId}" title="#{bundle.ViewArticleTitle_userId}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{articleController.destroyAndView}" value="#{bundle.ViewArticleDestroyLink}"/>

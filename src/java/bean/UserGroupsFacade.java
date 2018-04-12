@@ -5,7 +5,7 @@
  */
 package bean;
 
-import entity.User;
+import entity.UserGroups;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author florian.fasmeyer
  */
 @Stateless
-public class UserFacade extends AbstractFacade<User> {
+public class UserGroupsFacade extends AbstractFacade<UserGroups> {
 
     @PersistenceContext(unitName = "SharedKnowledgePlateformPU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class UserFacade extends AbstractFacade<User> {
         return em;
     }
 
-    public UserFacade() {
-        super(User.class);
+    public UserGroupsFacade() {
+        super(UserGroups.class);
     }
     
 }

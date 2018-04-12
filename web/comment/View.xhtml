@@ -17,6 +17,10 @@
                 <h:panelGrid columns="2">
                     <h:outputText value="#{bundle.ViewCommentLabel_commentId}"/>
                     <h:outputText value="#{commentController.selected.commentId}" title="#{bundle.ViewCommentTitle_commentId}"/>
+                    <h:outputText value="#{bundle.ViewCommentLabel_userId}"/>
+                    <h:outputText value="#{commentController.selected.userId}" title="#{bundle.ViewCommentTitle_userId}"/>
+                    <h:outputText value="#{bundle.ViewCommentLabel_articleId}"/>
+                    <h:outputText value="#{commentController.selected.articleId}" title="#{bundle.ViewCommentTitle_articleId}"/>
                     <h:outputText value="#{bundle.ViewCommentLabel_dateCreate}"/>
                     <h:outputText value="#{commentController.selected.dateCreate}" title="#{bundle.ViewCommentTitle_dateCreate}">
                         <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -25,10 +29,8 @@
                     <h:outputText value="#{commentController.selected.dateModif}" title="#{bundle.ViewCommentTitle_dateModif}">
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:outputText>
-                    <h:outputText value="#{bundle.ViewCommentLabel_userId}"/>
-                    <h:outputText value="#{commentController.selected.userId}" title="#{bundle.ViewCommentTitle_userId}"/>
-                    <h:outputText value="#{bundle.ViewCommentLabel_articleId}"/>
-                    <h:outputText value="#{commentController.selected.articleId}" title="#{bundle.ViewCommentTitle_articleId}"/>
+                    <h:outputText value="#{bundle.ViewCommentLabel_content}"/>
+                    <h:outputText value="#{commentController.selected.content}" title="#{bundle.ViewCommentTitle_content}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{commentController.destroyAndView}" value="#{bundle.ViewCommentDestroyLink}"/>

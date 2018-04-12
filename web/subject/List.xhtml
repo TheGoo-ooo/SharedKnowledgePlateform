@@ -34,15 +34,27 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSubjectTitle_img}"/>
+                                <h:outputText value="#{bundle.ListSubjectTitle_image}"/>
                             </f:facet>
-                            <h:outputText value="#{item.img}"/>
+                            <h:outputText value="#{item.image}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListSubjectTitle_description}"/>
                             </f:facet>
                             <h:outputText value="#{item.description}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSubjectTitle_color}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.color}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSubjectTitle_parentId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parentId}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewUserGroupsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewUserGroupsLabel_usergroupId}"/>
+                    <h:outputText value="#{userGroupsController.selected.usergroupId}" title="#{bundle.ViewUserGroupsTitle_usergroupId}"/>
+                    <h:outputText value="#{bundle.ViewUserGroupsLabel_groupname}"/>
+                    <h:outputText value="#{userGroupsController.selected.groupname}" title="#{bundle.ViewUserGroupsTitle_groupname}"/>
+                    <h:outputText value="#{bundle.ViewUserGroupsLabel_userId}"/>
+                    <h:outputText value="#{userGroupsController.selected.userId}" title="#{bundle.ViewUserGroupsTitle_userId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{userGroupsController.destroyAndView}" value="#{bundle.ViewUserGroupsDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewUserGroupsEditLink}"/>
+                <br />
+                <h:commandLink action="#{userGroupsController.prepareCreate}" value="#{bundle.ViewUserGroupsCreateLink}" />
+                <br />
+                <h:commandLink action="#{userGroupsController.prepareList}" value="#{bundle.ViewUserGroupsShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewUserGroupsIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

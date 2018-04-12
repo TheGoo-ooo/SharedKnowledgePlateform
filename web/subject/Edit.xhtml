@@ -19,10 +19,14 @@
                     <h:inputText id="subjectId" value="#{subjectController.selected.subjectId}" title="#{bundle.EditSubjectTitle_subjectId}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_subjectId}"/>
                     <h:outputLabel value="#{bundle.EditSubjectLabel_name}" for="name" />
                     <h:inputText id="name" value="#{subjectController.selected.name}" title="#{bundle.EditSubjectTitle_name}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_name}"/>
-                    <h:outputLabel value="#{bundle.EditSubjectLabel_img}" for="img" />
-                    <h:inputText id="img" value="#{subjectController.selected.img}" title="#{bundle.EditSubjectTitle_img}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_img}"/>
+                    <h:outputLabel value="#{bundle.EditSubjectLabel_image}" for="image" />
+                    <h:inputText id="image" value="#{subjectController.selected.image}" title="#{bundle.EditSubjectTitle_image}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_image}"/>
                     <h:outputLabel value="#{bundle.EditSubjectLabel_description}" for="description" />
                     <h:inputText id="description" value="#{subjectController.selected.description}" title="#{bundle.EditSubjectTitle_description}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_description}"/>
+                    <h:outputLabel value="#{bundle.EditSubjectLabel_color}" for="color" />
+                    <h:inputText id="color" value="#{subjectController.selected.color}" title="#{bundle.EditSubjectTitle_color}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_color}"/>
+                    <h:outputLabel value="#{bundle.EditSubjectLabel_parentId}" for="parentId" />
+                    <h:inputText id="parentId" value="#{subjectController.selected.parentId}" title="#{bundle.EditSubjectTitle_parentId}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_parentId}"/>
                 </h:panelGrid>
                 <h:commandLink action="#{subjectController.update}" value="#{bundle.EditSubjectSaveLink}"/>
                 <br />

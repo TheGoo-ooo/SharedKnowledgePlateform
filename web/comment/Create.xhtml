@@ -17,22 +17,20 @@
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateCommentLabel_commentId}" for="commentId" />
                     <h:inputText id="commentId" value="#{commentController.selected.commentId}" title="#{bundle.CreateCommentTitle_commentId}" required="true" requiredMessage="#{bundle.CreateCommentRequiredMessage_commentId}"/>
+                    <h:outputLabel value="#{bundle.CreateCommentLabel_userId}" for="userId" />
+                    <h:inputText id="userId" value="#{commentController.selected.userId}" title="#{bundle.CreateCommentTitle_userId}" required="true" requiredMessage="#{bundle.CreateCommentRequiredMessage_userId}"/>
+                    <h:outputLabel value="#{bundle.CreateCommentLabel_articleId}" for="articleId" />
+                    <h:inputText id="articleId" value="#{commentController.selected.articleId}" title="#{bundle.CreateCommentTitle_articleId}" required="true" requiredMessage="#{bundle.CreateCommentRequiredMessage_articleId}"/>
                     <h:outputLabel value="#{bundle.CreateCommentLabel_dateCreate}" for="dateCreate" />
-                    <h:inputText id="dateCreate" value="#{commentController.selected.dateCreate}" title="#{bundle.CreateCommentTitle_dateCreate}" required="true" requiredMessage="#{bundle.CreateCommentRequiredMessage_dateCreate}">
+                    <h:inputText id="dateCreate" value="#{commentController.selected.dateCreate}" title="#{bundle.CreateCommentTitle_dateCreate}" >
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:inputText>
                     <h:outputLabel value="#{bundle.CreateCommentLabel_dateModif}" for="dateModif" />
-                    <h:inputText id="dateModif" value="#{commentController.selected.dateModif}" title="#{bundle.CreateCommentTitle_dateModif}" required="true" requiredMessage="#{bundle.CreateCommentRequiredMessage_dateModif}">
+                    <h:inputText id="dateModif" value="#{commentController.selected.dateModif}" title="#{bundle.CreateCommentTitle_dateModif}" >
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:inputText>
-                    <h:outputLabel value="#{bundle.CreateCommentLabel_userId}" for="userId" />
-                    <h:selectOneMenu id="userId" value="#{commentController.selected.userId}" title="#{bundle.CreateCommentTitle_userId}" required="true" requiredMessage="#{bundle.CreateCommentRequiredMessage_userId}">
-                        <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
-                    <h:outputLabel value="#{bundle.CreateCommentLabel_articleId}" for="articleId" />
-                    <h:selectOneMenu id="articleId" value="#{commentController.selected.articleId}" title="#{bundle.CreateCommentTitle_articleId}" required="true" requiredMessage="#{bundle.CreateCommentRequiredMessage_articleId}">
-                        <f:selectItems value="#{articleController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateCommentLabel_content}" for="content" />
+                    <h:inputText id="content" value="#{commentController.selected.content}" title="#{bundle.CreateCommentTitle_content}" required="true" requiredMessage="#{bundle.CreateCommentRequiredMessage_content}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{commentController.create}" value="#{bundle.CreateCommentSaveLink}" />

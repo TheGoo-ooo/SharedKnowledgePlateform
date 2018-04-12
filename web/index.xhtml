@@ -5,17 +5,64 @@
     <h:head>
         <title>Facelet Title</title>
         <h:outputStylesheet name="css/jsfcrud.css"/>
+        <h:outputStylesheet name="css/style.css"/>
     </h:head>
     <h:body>
-        Hello from Facelets
-        <br />
-        <h:link outcome="/article/List" value="Show All Article Items"/>
-        <br />
-        <h:link outcome="/comment/List" value="Show All Comment Items"/>
-        <br />
-        <h:link outcome="/subject/List" value="Show All Subject Items"/>
-        <br />
-        <h:link outcome="/user/List" value="Show All User Items"/>
+        <div id="header">
+            
+            <a outcome="index.html" class="headerLogo">SharedKnowledgePlateform</a>
+            
+            <a href="index.html" class="headerText">Connexion</a>
+            <p class="headerText"> | </p>
+            <a href="index.html" class="headerText">Recherche</a>
+        </div>
+        <div id="content">
+        
+            <div id="parentsCategory">
+                <a href="index.xhtml" class="headerText">Science</a>
+                <a href="index.xhtml" class="headerText">Informatique</a>
+                <a href="index.xhtml" class="headerText">Web</a>
+                <a href="index.xhtml" class="headerText">JEE</a>
+            </div>
+            <div id="categoryList">
+                <a href="index.xhtml" class="headerText">Histoire</a>
+                <a href="index.xhtml" class="headerText">Architecture</a>
+                <a href="index.xhtml" class="headerText">JSF</a>
+                <a href="index.xhtml" class="headerText">DB connection</a>
+                <a href="index.xhtml" class="headerText">My First JEE application</a>
+                <a href="index.xhtml" class="headerText">JSP</a>
+                <a href="index.xhtml" class="headerText">Controllers</a>
+                <a href="index.xhtml" class="headerText">Entities</a>
+                <a href="index.xhtml" class="headerText">Test</a>
+                <a href="index.xhtml" class="headerText">c10</a>
+                <a href="index.xhtml" class="headerText">c11</a>
+                <a href="index.xhtml" class="headerText">c12</a>
+                <a href="index.xhtml" class="headerText">c13</a>
+                <a href="index.xhtml" class="headerText">c14</a>
+                <a href="index.xhtml" class="headerText">c15</a>
+                <a href="index.xhtml" class="headerText">c16</a>
+                <a href="index.xhtml" class="headerText">c17</a>
+                <a href="index.xhtml" class="headerText">c18</a>
+                <a href="index.xhtml" class="headerText">c19</a>
+                <a href="index.xhtml" class="headerText">c20</a>
+                <a href="index.xhtml" class="headerText">c21</a>
+                <a href="index.xhtml" class="headerText">c22</a>
+            </div>
+            <div id="whitespaces">
+            </div>
+        </div>
+        
+        <div id="footer">
+            <br />
+            <h:link outcome="/article/List" value="Show All Article Items"/>
+            <br />
+            <h:link outcome="/comment/List" value="Show All Comment Items"/>
+            <br />
+            <h:link outcome="/subject/List" value="Show All Subject Items"/>
+            <br />
+            <h:link outcome="/user/List" value="Show All User Items"/>
+        </div>
+        
     </h:body>
 
 

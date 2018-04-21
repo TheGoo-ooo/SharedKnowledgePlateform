@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <title>Facelet Title</title>
-        <h:outputStylesheet name="css/style.css"/>
+        <h:outputStylesheet name="/css/style.css"/>
     </h:head>
     <h:body>
         <div id="header">
@@ -18,13 +18,22 @@
         <div id="content">
         
             <div id="parentsCategory">
-                <a href="index.xhtml" class="headerText">Science</a>
-                <a href="index.xhtml" class="headerText">Informatique</a>
-                <a href="index.xhtml" class="headerText">Web</a>
-                <a href="index.xhtml" class="headerText">JEE</a>
+                <h:form styleClass="jsfcrud_list_form">
+                    <h:outputText escape="false" value="#{bundle.ListSubjectEmpty}" rendered="#{subjectController.items.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{subjectController.items.rowCount > 0}">
+                        <h:commandLink action="#{subjectController.previous}" value="#{bundle.Previous} #{subjectController.pagination.pageSize}" rendered="#{subjectController.pagination.hasPreviousPage}"/>&nbsp;
+                        <h:commandLink action="#{subjectController.next}" value="#{bundle.Next} #{subjectController.pagination.pageSize}" rendered="#{subjectController.pagination.hasNextPage}"/>&nbsp;
+                        <h:dataTable value="#{subjectController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rules="all">
+                            <h:column>
+                                <h:link outcome="/index" value="#{item.name}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGroup>
+                </h:form>
             </div>
             <div id="categoryList">
-                <a href="index.xhtml" class="headerText">Histoire</a>
+                <h:link outcome="/index" value="Histoire"/>
+                
                 <a href="index.xhtml" class="headerText">Architecture</a>
                 <a href="index.xhtml" class="headerText">JSF</a>
                 <a href="index.xhtml" class="headerText">DB connection</a>

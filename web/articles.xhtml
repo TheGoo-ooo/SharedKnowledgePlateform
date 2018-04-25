@@ -18,17 +18,13 @@
         <div id="content">
         
             <div id="parentsCategory">
-                <h:form styleClass="jsfcrud_list_form">
-                    <h:outputText escape="false" value="#{bundle.ListSubjectEmpty}" rendered="#{subjectController.items.rowCount == 0}"/>
-                    <h:panelGroup rendered="#{subjectController.items.rowCount > 0}">
-                        <h:commandLink action="#{subjectController.previous}" value="#{bundle.Previous} #{subjectController.pagination.pageSize}" rendered="#{subjectController.pagination.hasPreviousPage}"/>&nbsp;
-                        <h:commandLink action="#{subjectController.next}" value="#{bundle.Next} #{subjectController.pagination.pageSize}" rendered="#{subjectController.pagination.hasNextPage}"/>&nbsp;
-                        <h:dataTable value="#{subjectController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rules="all">
-                            <h:column>
-                                <h:commandLink action="#{subjectController.prepareTest}" value="#{item.name}"/>
-                            </h:column>
-                        </h:dataTable>
-                    </h:panelGroup>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="#{subjectController.selected.name}" title="#{bundle.ViewSubjectTitle_name}"/>
+                    </h:panelGrid>
                 </h:form>
             </div>
             <div id="categoryList">

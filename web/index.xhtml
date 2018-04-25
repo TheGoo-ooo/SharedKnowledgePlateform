@@ -28,7 +28,7 @@
                         <h:commandLink action="#{subjectController.next}" value="#{bundle.Next} #{subjectController.pagination.pageSize}" rendered="#{subjectController.pagination.hasNextPage}"/>&nbsp;
                         <h:dataTable value="#{subjectController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rules="all">
                             <h:column>
-                                <h:commandLink style="background-color: #{item.color}" action="#{subjectController.prepareTest}" value="#{item.name}"/>
+                                <h:commandLink style="background-color: #{item.color}" action="#{subjectController.prepareArticles}" value="#{item.name}"/>
                             </h:column>
                         </h:dataTable>
                     </h:panelGroup>

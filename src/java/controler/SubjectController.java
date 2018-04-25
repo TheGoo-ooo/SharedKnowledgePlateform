@@ -79,6 +79,12 @@ public class SubjectController implements Serializable {
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "/test";
     }
+    
+    public String prepareArticles() {
+        current = (Subject) getItems().getRowData();
+        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        return "/articles";
+    }
 
 
     public String prepareCreate() {

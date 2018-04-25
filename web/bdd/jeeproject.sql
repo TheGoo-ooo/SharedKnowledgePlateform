@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.6.4
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le :  mer. 25 avr. 2018 à 12:44
--- Version du serveur :  10.1.28-MariaDB
--- Version de PHP :  7.1.10
+-- Client :  127.0.0.1
+-- Généré le :  Mer 25 Avril 2018 à 12:43
+-- Version du serveur :  5.7.14
+-- Version de PHP :  5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -66,7 +64,7 @@ CREATE TABLE `subject` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `subject`
+-- Contenu de la table `subject`
 --
 
 INSERT INTO `subject` (`subject_id`, `name`, `image`, `description`, `color`, `parent_id`) VALUES
@@ -82,32 +80,49 @@ INSERT INTO `subject` (`subject_id`, `name`, `image`, `description`, `color`, `p
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `usergroups`
+--
+
+CREATE TABLE `usergroups` (
+  `usergroup_id` int(11) NOT NULL,
+  `groupname` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `usergroups`
+--
+
+INSERT INTO `usergroups` (`usergroup_id`, `groupname`, `username`) VALUES
+(2, 'modo', 'deni'),
+(3, 'user', 'luca'),
+(4, 'admin', 'super');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `users`
 --
 
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
-  `avatar` varchar(2000) NOT NULL,
-  `description` varchar(2000) NOT NULL,
-  `password` varchar(30) NOT NULL,
-  `usergroups_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `user_groups`
---
-
-CREATE TABLE `user_groups` (
-  `usergroup_id` int(11) NOT NULL,
-  `groupname` varchar(20) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `avatar` varchar(2000) DEFAULT NULL,
+  `description` varchar(2000) DEFAULT NULL,
+  `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Index pour les tables déchargées
+-- Contenu de la table `users`
+--
+
+INSERT INTO `users` (`user_id`, `name`, `avatar`, `description`, `password`) VALUES
+(3, 'super', NULL, NULL, '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),
+(4, 'luca', NULL, NULL, 'd70f47790f689414789eeff231703429c7f88a10210775906460edbf38589d90'),
+(5, 'deni', NULL, NULL, '1831a378efa8272418d2c512f406a3b49758968c1849e741ceafe9a9ff8875c2');
+
+--
+-- Index pour les tables exportées
 --
 
 --
@@ -129,19 +144,19 @@ ALTER TABLE `subject`
   ADD PRIMARY KEY (`subject_id`);
 
 --
+-- Index pour la table `usergroups`
+--
+ALTER TABLE `usergroups`
+  ADD PRIMARY KEY (`usergroup_id`);
+
+--
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- Index pour la table `user_groups`
---
-ALTER TABLE `user_groups`
-  ADD PRIMARY KEY (`usergroup_id`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT pour les tables exportées
 --
 
 --
@@ -149,32 +164,26 @@ ALTER TABLE `user_groups`
 --
 ALTER TABLE `article`
   MODIFY `article_id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT pour la table `comment`
 --
 ALTER TABLE `comment`
   MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT pour la table `subject`
 --
 ALTER TABLE `subject`
   MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
+--
+-- AUTO_INCREMENT pour la table `usergroups`
+--
+ALTER TABLE `usergroups`
+  MODIFY `usergroup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `user_groups`
---
-ALTER TABLE `user_groups`
-  MODIFY `usergroup_id` int(11) NOT NULL AUTO_INCREMENT;
-COMMIT;
-
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

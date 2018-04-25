@@ -98,17 +98,6 @@ A:link, A:visited {
     width:100%;
     background-color: #808080;
 }
-column{
-    display: block;
-    float: center;
-    width:100%;
-}
-form{
-    width:100%;
-}
-table {
-    width:100%;
-}
 
 #parentsCategory a{
     float: left;
@@ -146,6 +135,7 @@ table {
     float: left;
     width: 9em;
     height: 9em;
+    border-radius: 6em;
     align-items: center;
     background: #303030;
     text-align: center;
@@ -157,7 +147,7 @@ table {
 }
 #categoryList a:hover{
     background-color: #A0A0A0;
-    border-radius: 6em;
+    border-radius: 0.5em;
     
     -webkit-transition: 400ms;
     -moz-transition: 400ms;
@@ -165,4 +155,11 @@ table {
 }
 #whitespaces {
     height: 100%;
+}
+tr{
+    width: 250px;
+    display: inline-block;
+}
+td{
+    border: none;
 }

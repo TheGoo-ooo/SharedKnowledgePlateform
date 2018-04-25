@@ -4,6 +4,7 @@ import entity.Subject;
 import controler.util.JsfUtil;
 import controler.util.PaginationHelper;
 import bean.SubjectFacade;
+import entity.Article;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
@@ -72,13 +73,26 @@ public class SubjectController implements Serializable {
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
+    
+    public String prepareTest() {
+        current = (Subject) getItems().getRowData();
+        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        return "/test";
+    }
+    
+    public String prepareArticles() {
+        current = (Subject) getItems().getRowData();
+        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        return "/articles";
+    }
+
 
     public String prepareCreate() {
         current = new Subject();
         selectedItemIndex = -1;
         return "Create";
     }
-
+    
     public String create() {
         try {
             getFacade().create(current);

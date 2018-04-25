@@ -6,6 +6,8 @@
 package bean;
 
 import entity.Article;
+import static entity.Article_.subjectId;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +30,6 @@ public class ArticleFacade extends AbstractFacade<Article> {
     public ArticleFacade() {
         super(Article.class);
     }
-    
+     // add requêtes
+
 }

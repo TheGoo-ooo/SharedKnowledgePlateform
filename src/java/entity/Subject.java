@@ -66,7 +66,6 @@ public class Subject implements Serializable {
     @NotNull
     @Column(name = "parent_id")
     private int parentId;
-
     public Subject() {
     }
 

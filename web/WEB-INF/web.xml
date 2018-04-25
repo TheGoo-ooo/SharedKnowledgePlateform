@@ -21,4 +21,81 @@
     <welcome-file-list>
         <welcome-file>faces/index.xhtml</welcome-file>
     </welcome-file-list>
+    <security-constraint>
+        <display-name>ConstraintUser</display-name>
+        <web-resource-collection>
+            <web-resource-name>user</web-resource-name>
+            <description>Restricted User Area</description>
+            <url-pattern>/faces/users/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>user</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <display-name>ConstraintAdmin</display-name>
+        <web-resource-collection>
+            <web-resource-name>admin</web-resource-name>
+            <description>Restricted Administrator Area</description>
+            <url-pattern>/faces/admin/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>user</web-resource-name>
+            <description/>
+            <url-pattern>/faces/users/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>modo</web-resource-name>
+            <description/>
+            <url-pattern>/faces/modo/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <display-name>ConstraintModo</display-name>
+        <web-resource-collection>
+            <web-resource-name>modo</web-resource-name>
+            <description>Restricted Moderator Area</description>
+            <url-pattern>/faces/modo/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>user</web-resource-name>
+            <description/>
+            <url-pattern>/faces/users/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>modo</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>jdbc-realm</realm-name>
+        <form-login-config>
+            <form-login-page>/faces/login.jsp</form-login-page>
+            <form-error-page>/faces/loginerror.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
+    <security-role>
+        <description/>
+        <role-name>user</role-name>
+    </security-role>
+    <security-role>
+        <description/>
+        <role-name>admin</role-name>
+    </security-role>
+    <security-role>
+        <description/>
+        <role-name>modo</role-name>
+    </security-role>
+    <resource-ref>
+        <res-ref-name>jdbc/jeeproject</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
 </web-app>

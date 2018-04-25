@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="/css/style.css"/>
+    </h:head>
+    <h:body>
+        <div id="header">
+            
+            <a outcome="index.html" class="headerLogo">SharedKnowledgePlateform</a>
+            
+            <a href="index.html" class="headerText">Connexion</a>
+            <p class="headerText"> | </p>
+            <a href="index.html" class="headerText">Recherche</a>
+        </div>
+        <div id="content">
+        
+            <div id="parentsCategory">
+                
+            </div>
+            <div id="categoryList">
+                <h:form>
+                    <h:outputText escape="false" value="#{bundle.ListSubjectEmpty}" rendered="#{subjectController.items.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{subjectController.items.rowCount > 0}">
+                        <h:commandLink action="#{subjectController.previous}" value="#{bundle.Previous} #{subjectController.pagination.pageSize}" rendered="#{subjectController.pagination.hasPreviousPage}"/>&nbsp;
+                        <h:commandLink action="#{subjectController.next}" value="#{bundle.Next} #{subjectController.pagination.pageSize}" rendered="#{subjectController.pagination.hasNextPage}"/>&nbsp;
+                        <h:dataTable value="#{subjectController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rules="all">
+                            <h:column>
+                                <h:commandLink style="background-color: #{item.color}" action="#{subjectController.prepareArticles}" value="#{item.name}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGroup>
+                </h:form>
+                <a href="/SharedKnowledgePlateform/admin/index.xhtml" class="headerText">admin</a>
+                <a href="/SharedKnowledgePlateform/modo/index.xhtml" class="headerText">modo</a>
+                <a href="/SharedKnowledgePlateform/users/index.xhtml" class="headerText">user</a>
+            </div>
+            <div id="whitespaces">
+            </div>
+        </div>
+        
+        <div id="footer">
+        </div>
+        
+    </h:body>
+
+
+
+
+</html>
+
